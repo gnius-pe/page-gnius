@@ -10,7 +10,7 @@ interface CultureValue {
 
 export function Culture() {
   const { t } = useTranslation();
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export function Culture() {
           {values.map((value, index) => (
             <article
               key={value.title}
-              ref={(el) => { cardRefs.current[index] = el; }}
+              ref={(el) => { cardRefs.current[index] = el as HTMLElement; }}
               className={`culture-card culture-card-${index % 2 === 0 ? 'left' : 'right'} ${visibleCards.has(index) ? 'visible' : ''}`}
             >
               <div
