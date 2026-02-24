@@ -1,0 +1,219 @@
+.divisions-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.divisions-main-title {
+  font-size: 48px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 64px;
+  letter-spacing: -0.02em;
+}
+
+.divisions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.division-card {
+  position: relative;
+  display: block;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 40px;
+  overflow: hidden;
+  transition: all 400ms ease;
+  text-decoration: none;
+}
+
+.division-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 20px 60px rgba(0, 102, 255, 0.15);
+}
+
+.division-card-code:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 20px 60px rgba(0, 102, 255, 0.15);
+}
+
+.division-card-pictures:hover {
+  border-color: #8B5CF6;
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+}
+
+.division-card-visual {
+  position: relative;
+  height: 180px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.division-card-icon {
+  position: relative;
+  z-index: 2;
+  font-size: 64px;
+  color: var(--accent-primary);
+}
+
+.division-card-pictures .division-card-icon {
+  color: #8B5CF6;
+}
+
+.card-shape {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.card-shape-1 {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  opacity: 0.2;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.card-shape-2 {
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--accent-primary);
+  animation: rotate 15s linear infinite;
+  top: 20%;
+  right: 20%;
+}
+
+.card-shape-3 {
+  width: 50px;
+  height: 50px;
+  background: var(--accent-secondary);
+  opacity: 0.4;
+  animation: pulse 3s ease-in-out infinite reverse;
+  bottom: 10%;
+  left: 15%;
+}
+
+.division-card-pictures .card-shape-1 {
+  background: linear-gradient(135deg, #8B5CF6, #EC4899);
+}
+
+.division-card-pictures .card-shape-2 {
+  border-color: #8B5CF6;
+}
+
+.division-card-pictures .card-shape-3 {
+  background: #EC4899;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.division-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.division-card-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.division-card-title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.division-card-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.division-card-services {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.division-card-services span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.division-card-services svg {
+  color: var(--accent-primary);
+}
+
+.division-card-pictures .division-card-services svg {
+  color: #8B5CF6;
+}
+
+.division-card-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  transition: gap 300ms ease;
+}
+
+.division-card:hover .division-card-action {
+  gap: 12px;
+}
+
+.division-card-pictures .division-card-action {
+  color: #8B5CF6;
+}
+
+@media (max-width: 1024px) {
+  .divisions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .divisions-main-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+  
+  .division-card {
+    padding: 32px;
+  }
+  
+  .division-card-title {
+    font-size: 28px;
+  }
+  
+  .division-card-visual {
+    height: 140px;
+  }
+  
+  .division-card-icon {
+    font-size: 48px;
+  }
+}

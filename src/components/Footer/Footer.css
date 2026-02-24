@@ -1,0 +1,147 @@
+.footer {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-top {
+  padding: 64px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-main {
+  display: flex;
+  gap: 64px;
+}
+
+.footer-brand {
+  flex-shrink: 0;
+  width: 280px;
+}
+
+.footer-logo {
+  height: 36px;
+  width: auto;
+  margin-bottom: 20px;
+}
+
+[data-theme="dark"] .footer-logo {
+  filter: invert(1) brightness(2);
+}
+
+.footer-description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 64px;
+  flex: 1;
+}
+
+.footer-column {
+  min-width: 120px;
+}
+
+.footer-heading {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  margin: 0 0 20px 0;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 12px;
+}
+
+.footer-link {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--accent-primary);
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-social-link:hover {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.footer-bottom {
+  padding: 24px;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.footer-copyright {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .footer-main {
+    flex-direction: column;
+    gap: 48px;
+  }
+  
+  .footer-brand {
+    width: 100%;
+  }
+  
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .footer-column {
+    min-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-top {
+    padding: 48px 20px;
+  }
+  
+  .footer-links {
+    gap: 32px;
+  }
+  
+  .footer-column {
+    min-width: 100%;
+  }
+}

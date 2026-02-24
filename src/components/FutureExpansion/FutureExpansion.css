@@ -1,0 +1,124 @@
+.future-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.future-title {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.future-text {
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.future-tagline {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.future-visual {
+  position: relative;
+  height: 400px;
+}
+
+.future-shapes {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.future-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--accent-primary);
+}
+
+.future-circle-1 {
+  width: 180px;
+  height: 180px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: breathe 6s ease-in-out infinite;
+}
+
+.future-circle-2 {
+  width: 260px;
+  height: 260px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: breathe 6s ease-in-out infinite 0.5s;
+}
+
+.future-circle-3 {
+  width: 340px;
+  height: 340px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: breathe 6s ease-in-out infinite 1s;
+}
+
+.future-circle-4 {
+  width: 420px;
+  height: 420px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: breathe 6s ease-in-out infinite 1.5s;
+}
+
+@keyframes breathe {
+  0% {
+    opacity: 0.15;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  25% {
+    opacity: 0.35;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  75% {
+    opacity: 0.35;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0.15;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+}
+
+@media (max-width: 1024px) {
+  .future-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .future-visual {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .future-title {
+    font-size: 36px;
+  }
+  
+  .future-tagline {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,91 @@
+.section {
+  padding: 120px 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.section-bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.section-bg-gradient {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.section-bg-dark {
+  background-color: #000000;
+}
+
+/* ========================================
+   FADE TRANSITIONS (Opacity Masks)
+   ======================================== */
+
+/* Fade bottom - blends into next section */
+.fade-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: bottom;
+  mask-position: bottom;
+  -webkit-mask-size: 100% 120%;
+  mask-size: 100% 120%;
+}
+
+/* Fade top - blends into previous section */
+.fade-top {
+  -webkit-mask-image: linear-gradient(to top, black 0%, black 80%, transparent 100%);
+  mask-image: linear-gradient(to top, black 0%, black 80%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: top;
+  mask-position: top;
+  -webkit-mask-size: 100% 120%;
+  mask-size: 100% 120%;
+}
+
+/* Both directions - for overlapping sections */
+.fade-bottom.fade-top {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+  -webkit-mask-size: 100% 140%;
+  mask-size: 100% 140%;
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+    min-height: auto;
+  }
+  
+  /* Slightly less fade on mobile for more content visibility */
+  .fade-bottom {
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);
+  }
+  
+  .fade-top {
+    -webkit-mask-image: linear-gradient(to top, black 0%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to top, black 0%, black 85%, transparent 100%);
+  }
+}
