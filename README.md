@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# GNIUS CODE - Website Corporativo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web corporativo de GNIUS CODE, empresa tecnológica especializada en soluciones digitales integrales.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+GNIUS CODE es una empresa de tecnología dedicada a eliminar la barrera de entrada tecnológica para las empresas. Ofrecemos soluciones integrales que permiten a nuestros clientes enfocarse en su negocio mientras nosotros digitalizamos sus procesos.
 
-## React Compiler
+## Misión
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Eliminar la barrera de entrada tecnológica para las empresas, ofreciendo soluciones integrales que permiten a nuestros clientes enfocarse en su negocio mientras nosotros digitalizamos sus procesos.
 
-## Expanding the ESLint configuration
+## Visión
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Ser la empresa de tecnología de referencia en Perú, democratizando el acceso a soluciones digitales innovadoras.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tecnologías
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Frontend**: React, TypeScript
+- **Build Tool**: Vite
+- **Estilos**: Tailwind CSS
+- **Animaciones**: Framer Motion, Three.js (@react-three/fiber)
+- **Routing**: React Router DOM
+- **Iconos**: React Icons (Fi, Fa6)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Estructura del Proyecto
+
+```
+src/
+├── assets/          # Recursos estáticos
+├── components/      # Componentes reutilizables
+│   ├── features/    # Funcionalidades (ScrollToTop, WhatsAppButton)
+│   └── layout/      # Layout (Navbar, Footer, Layout)
+├── context/         # Contextos de React (ThemeContext)
+├── pages/           # Páginas del sitio
+│   ├── Home.tsx
+│   ├── About.tsx
+│   ├── Services.tsx
+│   ├── Portfolio.tsx
+│   ├── Blog.tsx
+│   └── Contact.tsx
+├── types/           # Tipos TypeScript
+├── App.tsx          # Componente principal
+└── main.tsx         # Punto de entrada
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Páginas del Sitio
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Ruta | Página |
+|------|--------|
+| `/` | Inicio |
+| `/nosotros` | Sobre Nosotros |
+| `/servicios` | Servicios |
+| `/portfolio` | Portafolio |
+| `/blog` | Blog |
+| `/contacto` | Contacto |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Comandos
+
+```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+
+# Construir para producción
+npm run build
+
+# Previsualizar build
+npm run preview
 ```
+
+## Licencia
+
+Este código es propiedad exclusiva de GNIUS CODE. Todos los derechos reservados. Ver archivo [LICENSE](./LICENSE) para más información.
+
+---
+
+**GNIUS CODE** - Tecnología e Innovación al Servicio de tu Negocio.
