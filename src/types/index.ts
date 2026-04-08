@@ -2,8 +2,9 @@ export interface Service {
   id: number;
   title: string;
   description: string;
-  icon: string;
+  icon?: string;
   features: string[];
+  imageUrl?: string;
 }
 
 export interface Project {
