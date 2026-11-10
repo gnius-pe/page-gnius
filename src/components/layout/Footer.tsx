@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import type { CSSProperties } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect, type CSSProperties } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { FiFacebook, FiInstagram, FiYoutube, FiTwitter, FiGithub } from 'react-icons/fi';
 import { FaTiktok } from 'react-icons/fa6';
@@ -25,10 +25,34 @@ const quickLinks = [
 
 export default function Footer() {
   const { theme } = useTheme();
+  const { pathname } = useLocation();
   const footerIsDark = theme === 'light';
   const footerColors = footerIsDark
     ? { '--footer-main': '#ffffff', '--footer-muted': '#9ca3af', '--footer-divider': 'rgba(255,255,255,0.1)', '--footer-social': 'rgba(255,255,255,0.1)' }
     : { '--footer-main': '#1a202c', '--footer-muted': '#4b5563', '--footer-divider': '#d1d5db', '--footer-social': '#e5e7eb' };
+
+  useEffect(() => {
+    // The home page animates these styles directly with GSAP. Restore the static theme
+    // palette on internal pages because the shared layout keeps the footer mounted.
+    if (pathname === '/') return;
+
+    const footer = document.querySelector<HTMLElement>('[data-site-footer]');
+    if (!footer) return;
+
+    Object.entries(footerColors).forEach(([name, value]) => {
+      footer.style.setProperty(name, value);
+    });
+    footer.style.backgroundColor = footerIsDark ? '#1a202c' : '#ffffff';
+
+    const wipe = footer.querySelector<HTMLElement>('[data-footer-wipe]');
+    if (wipe) {
+      wipe.style.backgroundColor = footerIsDark ? '#1a202c' : '#ffffff';
+      wipe.style.clipPath = 'circle(0% at 100% 0%)';
+    }
+
+    const logo = footer.querySelector<HTMLElement>('[data-footer-logo]');
+    if (logo) logo.style.filter = footerIsDark ? 'invert(1)' : 'invert(0)';
+  }, [pathname, theme]);
 
   return (
     <footer data-site-footer className={'relative isolate overflow-hidden pt-12 pb-6 text-[color:var(--footer-main)] ' + (footerIsDark ? 'bg-secondary' : 'bg-white')} style={footerColors as CSSProperties}>
