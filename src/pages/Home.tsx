@@ -182,15 +182,6 @@ function ScrollCta() {
     });
 
     media.add('(max-width: 767px)', () => {
-      const scroll = { trigger: section, start: 'top 90%', end: 'bottom 10%', scrub: 0.6, invalidateOnRefresh: true };
-      gsap.to(track, { x: () => -distance(), ease: 'none', scrollTrigger: scroll });
-      gsap.to('.cta-underline:not(.cta-brand-underline)', { scaleX: 1, ease: 'none', stagger: 0.1, scrollTrigger: scroll });
-      gsap.to('.cta-contact-highlight', { rotation: 3, scale: 1.04, ease: 'none', stagger: 0.12, scrollTrigger: scroll });
-      gsap.to('.cta-brand-underline', { scaleX: 1, ease: 'none', scrollTrigger: { ...scroll, end: () => '+=' + window.innerHeight * 0.45 } });
-      gsap.fromTo('.cta-brand-kicker', { x: -32, opacity: 1 }, { x: 0, opacity: 1, ease: 'none', scrollTrigger: { ...scroll, end: () => '+=' + window.innerHeight * 0.45 } });
-      gsap.fromTo('.cta-brand-name', { x: 54, opacity: 1 }, { x: 0, opacity: 1, ease: 'none', scrollTrigger: { ...scroll, end: () => '+=' + window.innerHeight * 0.45 } });
-      gsap.fromTo('.cta-brand-digital', { x: -42, rotation: -10, scale: 0.9, opacity: 1 }, { x: 0, rotation: -3, scale: 1, opacity: 1, ease: 'none', scrollTrigger: { ...scroll, end: () => '+=' + window.innerHeight * 0.45 } });
-      gsap.to('.cta-shape--orbit, .cta-shape--diamond', { rotation: 90, y: 40, ease: 'none', scrollTrigger: scroll });
       const footer = document.querySelector<HTMLElement>('[data-site-footer]');
       const footerWipe = footer?.querySelector<HTMLElement>('[data-footer-wipe]');
       if (footer && footerWipe) {
@@ -220,7 +211,7 @@ function ScrollCta() {
   }, { scope: sectionRef, dependencies: [prefersReducedMotion, theme], revertOnUpdate: true });
 
   return (
-    <section ref={sectionRef} aria-label="GNIUS DIGITAL, soluciones digitales" className={'relative h-[150svh] overflow-hidden md:h-[100svh] ' + (theme === 'dark' ? 'bg-secondary text-white' : 'bg-white text-secondary')}>
+    <section ref={sectionRef} aria-label="GNIUS DIGITAL, soluciones digitales" className={'relative h-auto overflow-hidden md:h-[100svh] ' + (theme === 'dark' ? 'bg-secondary text-white' : 'bg-white text-secondary')}>
       {prefersReducedMotion && (
         <div className="container-custom flex h-full items-center justify-center py-16 text-center">
           <div className="max-w-3xl">
@@ -231,7 +222,7 @@ function ScrollCta() {
           </div>
         </div>
       )}
-      <div ref={trackRef} aria-hidden={prefersReducedMotion || undefined} className={prefersReducedMotion ? 'hidden' : 'flex h-full w-max will-change-transform'}>
+      <div ref={trackRef} aria-hidden={prefersReducedMotion || undefined} className={prefersReducedMotion ? 'hidden' : 'hidden h-full w-max will-change-transform md:flex'}>
         <div className="relative flex h-full w-screen shrink-0 items-center justify-center overflow-hidden px-6 md:px-12">
           <div className="cta-shape--orbit absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-gradient-to-br from-cyan-300 via-emerald-300 to-lime-200 opacity-80 md:h-[28rem] md:w-[28rem]" aria-hidden="true" />
           <div className="cta-shape--diamond absolute right-[12%] top-[18%] h-16 w-16 rotate-45 rounded-xl bg-gradient-to-br from-orange-300 to-fuchsia-300 shadow-xl md:h-24 md:w-24" aria-hidden="true" />
@@ -286,6 +277,55 @@ function ScrollCta() {
           </div>
         </div>
       </div>
+      {!prefersReducedMotion && (
+        <div className="relative z-10 flex flex-col md:hidden">
+          <section className="relative flex min-h-[72svh] w-full flex-col items-center justify-center overflow-hidden px-6 py-20 text-center">
+            <motion.div className="absolute -left-16 bottom-0 h-44 w-44 rounded-full bg-gradient-to-br from-cyan-300 via-emerald-300 to-lime-200 opacity-80" aria-hidden="true" initial={{ scale: 0.7, y: 60 }} whileInView={{ scale: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.8 }} />
+            <motion.div className="absolute right-10 top-16 h-10 w-10 rotate-45 rounded-lg bg-gradient-to-br from-orange-300 to-fuchsia-300 shadow-xl" aria-hidden="true" initial={{ rotate: 0, y: -30 }} whileInView={{ rotate: 135, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.8 }} />
+            <motion.div className="relative z-10" initial={{ opacity: 0, y: 48 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.7 }}>
+              <p className="mb-5 text-2xl font-bold leading-tight tracking-tight text-secondary dark:text-white">Tecnología <span className="text-primary dark:text-cyan-300">que impulsa</span></p>
+              <h2 className="text-[clamp(4.5rem,23vw,7rem)] font-black leading-[0.8] tracking-[-0.09em] text-secondary dark:text-white">GNIUS</h2>
+              <div className="relative mt-5 inline-flex -rotate-3 items-center rounded-xl bg-cyan-300 px-6 py-2 text-4xl font-extrabold leading-none tracking-tight text-secondary shadow-[7px_8px_0_rgba(15,23,42,0.12)]">DIGITAL
+                <svg className="absolute -right-8 -top-5 h-10 w-10 text-primary" viewBox="0 0 80 80" fill="none" aria-hidden="true"><path d="M40 4v72M4 40h72M14.5 14.5l51 51m0-51-51 51" stroke="currentColor" strokeLinecap="round" strokeWidth="7" /></svg>
+              </div>
+              <div className="mx-auto mt-7 h-2 w-4/5 -rotate-2 rounded-full bg-primary" />
+            </motion.div>
+          </section>
+
+          <section className="relative flex min-h-[62svh] w-full flex-col items-center justify-center overflow-hidden px-6 py-20 text-center">
+            <motion.div className="absolute -bottom-10 -right-12 h-44 w-44 rounded-full border-[18px] border-cyan-200" aria-hidden="true" initial={{ scale: 0.6, rotate: -30 }} whileInView={{ scale: 1, rotate: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.8 }} />
+            <motion.div className="relative z-10" initial={{ opacity: 0, y: 48 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.7 }}>
+              <p className="mb-3 text-base font-bold uppercase tracking-[0.28em] text-primary dark:text-cyan-300">Creamos</p>
+              <h2 className="text-[clamp(3.4rem,16vw,5.5rem)] font-black leading-[0.82] tracking-[-0.08em] text-secondary dark:text-white">Soluciones</h2>
+              <p className="mt-4 text-6xl font-light leading-none tracking-[-0.05em] text-primary dark:text-cyan-300"><span className="underline decoration-cyan-300 decoration-[5px] underline-offset-8">digitales</span></p>
+            </motion.div>
+          </section>
+
+          <section className="relative flex min-h-[65svh] w-full flex-col items-center justify-center overflow-hidden px-6 py-20 text-center">
+            <motion.div className="absolute -right-12 top-8 h-44 w-44 rounded-full bg-gradient-to-br from-fuchsia-200 to-violet-300 opacity-80" aria-hidden="true" initial={{ x: 45, rotate: -25 }} whileInView={{ x: 0, rotate: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.8 }} />
+            <motion.div className="relative z-10 max-w-md" initial={{ opacity: 0, y: 48 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.7 }}>
+              <p className="mb-3 text-3xl font-light leading-tight text-secondary dark:text-white">¿Listo para</p>
+              <h2 className="text-[clamp(3.5rem,16vw,5.5rem)] font-black leading-[0.88] tracking-[-0.08em] text-secondary dark:text-white">transformar <span className="text-primary dark:text-cyan-300">tu negocio?</span></h2>
+              <div className="mx-auto mt-6 h-1.5 w-1/2 rounded-full bg-cyan-400" />
+            </motion.div>
+          </section>
+
+          <section className="relative flex min-h-[70svh] w-full flex-col items-center justify-center overflow-hidden px-6 py-20 text-center">
+            <motion.div className="absolute -bottom-12 left-4 h-48 w-48 rounded-full bg-gradient-to-br from-cyan-200 via-violet-200 to-fuchsia-200 opacity-80" aria-hidden="true" initial={{ y: 45, scale: 0.7 }} whileInView={{ y: 0, scale: 1 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.8 }} />
+            <motion.div className="relative z-10 max-w-lg text-[clamp(2rem,9vw,3.4rem)] font-semibold leading-[1.35] tracking-tight text-secondary dark:text-white" initial={{ opacity: 0, y: 48 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.7 }}>
+              <span className="inline-block -rotate-2 rounded-xl bg-primary px-3 py-1 text-white shadow-[6px_7px_0_rgba(15,23,42,0.12)]">Contáctanos</span> hoy y <span className="inline-block -rotate-1 rounded-lg bg-cyan-200 px-2 py-1 font-extrabold text-secondary">descubre</span> cómo podemos ayudarte a <span className="inline-block rotate-2 rounded-xl bg-cyan-300 px-3 py-1 text-secondary shadow-[6px_7px_0_rgba(15,23,42,0.12)]">alcanzar tus objetivos.</span>
+            </motion.div>
+          </section>
+
+          <section className="relative flex min-h-[55svh] w-full flex-col items-center justify-center overflow-hidden px-6 py-20 text-center">
+            <motion.div className="absolute -bottom-20 -right-16 h-56 w-56 rounded-full bg-gradient-to-br from-cyan-200 via-blue-200 to-violet-200 opacity-90" aria-hidden="true" initial={{ scale: 0.65, rotate: -25 }} whileInView={{ scale: 1, rotate: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.8 }} />
+            <motion.div className="relative z-10" initial={{ opacity: 0, y: 42 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.7 }}>
+              <p className="mb-5 text-2xl font-semibold text-gray-600 dark:text-gray-300">Hagamos crecer tu idea</p>
+              <Link to="/contacto" className="btn-primary inline-flex items-center gap-3 rounded-xl px-7 py-4 text-lg shadow-lg shadow-primary/20">Iniciar proyecto <FiArrowRight size={22} /></Link>
+            </motion.div>
+          </section>
+        </div>
+      )}
     </section>
   );
 }
